@@ -1,0 +1,1 @@
+this npm module is for manipulating data extracted from forge derivation api
