@@ -1,29 +1,44 @@
-'use strict';
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 
-const path = require('path');
+const isProduction = process.env.NODE_ENV == "production";
 
-module.exports = {
-    entry: './src/index.ts',
+const config = {
+    target: "node",
     context: path.resolve(__dirname),
+    entry: "./src/index.ts",
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'cjs.js',
-
+        library: {
+            // name: "autoforge",
+            type: "commonjs2",
+            export: "default"
+        },
+        path: path.resolve(__dirname, "dist"),
+        filename: 'index.js',
     },
+    externals: [nodeExternals()],
+    plugins: [
+        new CleanWebpackPlugin(),
+    ],
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
-                test: /\.ts?$/,
-                loader: 'ts-loader',
-                exclude: /node_modules/,
+                test: /\.ts$/,
+                loader: "ts-loader",
+                exclude: ["/node_modules/"],
             }
-        ]
+        ],
     },
-    resolve: {
-        extensions: ['.ts', '.js'],
+    resolve: { extensions: ['.ts', '.js'] },
+};
 
-    },
-    devtool: 'inline-source-map',
-    plugins: [
-    ]
+module.exports = () => {
+    if (isProduction) {
+        config.mode = "production";
+    } else {
+        config.mode = "development";
+    }
+    return config;
 };

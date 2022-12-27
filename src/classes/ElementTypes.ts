@@ -1,0 +1,5 @@
+enum ElementTypes {
+    StructuralColumn = "StructuralColumn",
+}
+
+
