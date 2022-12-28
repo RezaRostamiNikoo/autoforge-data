@@ -1,5 +1,0 @@
-enum ElementTypes {
-    StructuralColumn = "StructuralColumn",
-}
-
-

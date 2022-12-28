@@ -1,4 +1,4 @@
-export default [
+module.exports = [
     {
         "_id": "63a4876d080e0000ed00728a",
         "objectid": 2264,

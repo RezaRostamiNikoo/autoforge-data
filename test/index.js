@@ -1,5 +1,8 @@
-const Main = require("../dist/main");
+const metadata = require("./data/sample1/metadata");
+const properties = require("./data/sample1/properties");
 
-const m = new Main();
+const Main = require("../dist");
 
-m.run();
+const m = new Main(metadata, properties);
+
+m.createTree();

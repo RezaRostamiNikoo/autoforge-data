@@ -2,11 +2,12 @@
   "name": "autoforge-data",
   "version": "1.0.0",
   "description": "a pacakge for manipulating data extracted from Forge Derivative Api",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:node": "tsc",
-    "test": "node ./test/index.js",
+    "test": "npm run build:prod && node ./test/index.js",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch"

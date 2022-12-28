@@ -1,31 +1,34 @@
-import ForgeMetadata from "./Forge/ForgeMetadata";
+import IElementCategory from "../Interfaces/IElementCategory";
+import IForgeMetadata from "../Interfaces/IForgeMetadata";
+import IForgeMetadataProperties from "../Interfaces/IForgeMetadataProperties";
+import eElementType from "../enums/eElementType";
+
+import ElementTypeFactory from "./ElementTypeFactory";
+
 
 export default class Main {
 
-    private metadata: Array<Object>;
-    private properties: Array<Object>;
+    private metadata: Array<IForgeMetadata>;
+    private static elements: Array<IElementCategory> = [];
+    public static properties: Array<IForgeMetadataProperties>;
 
     /**
      * 
      * @param metadata exported from forgeApi metadata
      * @param properties extracted from model: forge api -> metadata properties
      */
-    constructor(metadata: Array<Object>, properties: Array<Object>) {
-        this.metadata = metadata;
-        this.properties = properties;
+    constructor(metadata: any, properties: Array<IForgeMetadataProperties>) {
+        this.metadata = <Array<IForgeMetadata>>metadata.model;
+        Main.properties = properties;
     }
 
-
-    private run = (): void => {
-        const names = this.metadata.map(o => (<ForgeMetadata>o).name);
-
-
-        console.log("adasdas");
-
+    createTree = (): void => {
+        this.metadata.forEach(m => {
+            for (const [value, name] of Object.entries(eElementType))
+                if (m.name === name)
+                    Main.elements.push(
+                        ElementTypeFactory.getInstance(<eElementType>name, m)
+                    );
+        })
     }
-
-
 }
-
-
-
