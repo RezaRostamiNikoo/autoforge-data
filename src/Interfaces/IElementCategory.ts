@@ -1,5 +1,5 @@
 export default interface IElementCategory {
-    name: String;
-    objectid: Number;
+    name: string;
+    objectid: number;
     objects?: Array<any>;
 }

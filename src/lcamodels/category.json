@@ -1,0 +1,12 @@
+{
+    "@type": "Category",
+    "@id": "ddddddddddddddddddddddddd",
+    "name": "bbbbbbbb",
+    "modelType": "PROCESS",
+    "category": {
+        "@type": "Category",
+        "@id": "ssssssssc",
+        "name": "aaaaaaaa",
+        "categoryType": "PROCESS"
+    }
+}

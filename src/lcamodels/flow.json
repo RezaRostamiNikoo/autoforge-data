@@ -1,0 +1,17 @@
+{
+    "@type": "Flow",
+    "@id": "8ff7c9ddddddddddddddd",
+    "name": "this is the serious",
+    "flowType": "PRODUCT_FLOW",
+    "flowProperties": [
+        {
+            "@type": "FlowPropertyFactor",
+            "referenceFlowProperty": true,
+            "flowProperty": {
+                "@type": "FlowProperty",
+                "@id": "93a60a56-a3c8-22da-a746-0800200c9a66"
+            },
+            "conversionFactor": 1.0
+        }
+    ]
+}
